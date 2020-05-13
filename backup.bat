@@ -1,22 +1,33 @@
-﻿cls
+cls
 echo off
 cls
 
 REM - VARIAVEIS
-set ORIGEM=C:\Users\jhowp\OneDrive\Desktop\Escola
-set DESTINO="C:\Users\jhowp\OneDrive\Desktop\Escola2"
-set LOG=C:\Users\jhowp\OneDrive\Desktop\log
-
+echo # - - - - - - - - - - - - - - - - - - - - - - - - - #
+echo #         Aquivos de origem e destino	         #
+echo # - - - - - - - - - - - - - - - - - - - - - - - - - #
+echo #-- Origem do arquivo -- 
+set /p ORIGEM=pasta de origem :
+echo #-- Destino --
+echo #
+echo #-- Nao esqueca de colocar o destino entre "aspas"
+set /p DESTINO="Pasta de Destino:"
+echo -- Set a pasta de logs--
+set /p LOG=endereço do log:
+echo # - - - - - - - - - - - - - - - - - - - - - - - - - #
+echo #                  Config de email		         #
+echo # - - - - - - - - - - - - - - - - - - - - - - - - - #
 REM - EMAIL
 ECHO #---EMAIL---#
 set /p EMAIL=
 echo #---Passwords--#
 set /p PASS=
-echo #--Serve SMTP--#
+echo #--Server SMTP--#
 echo #--padrao e o smtp.live.com--#
-echo
+echo #
 echo #--e pode ser alterado na edicao do arquivo--#
-set /p SERVE=smtp.live.com
+set SERVER=smtp.live.com
+pause
 
 REM - ESTRUTURA
 echo # - - - - - - - - - - - - - - - - - - - - - - - - - #
@@ -38,8 +49,10 @@ echo # - - - - - - - - - - - - - - - - - - - - - - - - - #
 
 REM - fica esperto com o license que pode parar de funcionar, ai tem que procurar no SMTP MAILER
 
-SMTPMAIL.EXE license=20200613206ce23e762aa088dcda73c4be8b9a2a ssl from=%EMAIL% to=%EMAIL% body="O backup foi realizado com sucesso!" user=%EMAIL% password=%PASS% subject=Backup server=%SERVE% attachment="C:\Users\jhowp\OneDrive\Desktop\log\Arquivos.txt"
+SMTPMAIL.EXE license=20200613206ce23e762aa088dcda73c4be8b9a2a ssl from=%EMAIL% to=%EMAIL% body="O backup foi realizado com sucesso!" user=%EMAIL% password=%PASS% subject=Backup server=%SERVER% attachment="C:\Users\jhowp\OneDrive\Desktop\log\Arquivos.txt"
 
 echo # - - - - - - - - - - - - - - - - - - - - - - - - - #
 echo #                    EMAIL Enviado                  #
 echo # - - - - - - - - - - - - - - - - - - - - - - - - - #
+
+pause
